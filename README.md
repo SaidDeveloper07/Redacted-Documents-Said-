@@ -1,1 +1,1 @@
-# GrokPro-Kodun-Sahibi-de-ilim-
+Kod GrokPremium Kod benim değildir 

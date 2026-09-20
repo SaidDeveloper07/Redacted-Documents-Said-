@@ -1,1 +1,1 @@
-Kod GrokPremium Kod benim değildir 
+Promt

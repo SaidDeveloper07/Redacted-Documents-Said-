@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Said &amp; Ege — Hafta 1 Planı</title>
+  <style>
+    :root {
+      --bg: #0c0e14;
+      --card: #141824;
+      --line: #2a3144;
+      --text: #e8ecf8;
+      --muted: #9aa3b8;
+      --accent: #6b8cff;
+      --green: #3dd68c;
+      --orange: #ffb020;
+      --red: #ff6b7a;
+      --purple: #a78bfa;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      padding: 24px 16px 64px;
+    }
+    .wrap { max-width: 880px; margin: 0 auto; }
+    header {
+      border: 1px solid var(--line);
+      background: linear-gradient(145deg, #151a2a, #0f121c);
+      border-radius: 16px;
+      padding: 28px 24px;
+      margin-bottom: 24px;
+    }
+    header h1 {
+      margin: 0 0 6px;
+      font-size: 1.85rem;
+      letter-spacing: 0.02em;
+      color: var(--accent);
+    }
+    header .sub { color: var(--muted); font-size: 0.95rem; }
+    header .badge {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #1c2438;
+      border: 1px solid var(--line);
+      font-size: 0.82rem;
+      color: var(--green);
+    }
+    h2 {
+      margin: 32px 0 12px;
+      font-size: 1.25rem;
+      color: var(--accent);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+    h3 {
+      margin: 20px 0 8px;
+      font-size: 1.05rem;
+      color: var(--orange);
+    }
+    p { margin: 0 0 12px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin: 12px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      margin: 12px 0;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #1a2030; color: var(--accent); }
+    ul, ol { margin: 8px 0 12px; padding-left: 1.25rem; }
+    li { margin: 4px 0; }
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .tag-said { background: #1a2a22; color: var(--green); }
+    .tag-ege { background: #1a2233; color: var(--accent); }
+    .tag-both { background: #2a2438; color: var(--purple); }
+    .day {
+      border-left: 4px solid var(--accent);
+      padding-left: 14px;
+      margin: 28px 0;
+    }
+    .day h3 { margin-top: 0; color: var(--text); }
+    .check { list-style: none; padding-left: 0; }
+    .check li::before { content: "☐ "; color: var(--muted); }
+    .warn {
+      background: #2a1c14;
+      border: 1px solid #5a3a20;
+      color: #ffd0a0;
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.9rem;
+    }
+    .success {
+      background: #14241c;
+      border: 1px solid #2a5a40;
+      color: #b8f0d0;
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    code, .mono {
+      font-family: ui-monospace, Consolas, monospace;
+      font-size: 0.88em;
+      background: #1a2030;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+    footer {
+      margin-top: 40px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Said &amp; Ege</h1>
+      <div class="sub">Oyun geliştirme — 1. Hafta detay planı · Android · Unity + Python</div>
+      <span class="badge">Hedef: Okul kapanmadan oynanır demo iskeleti</span>
+    </header>
+
+    <h2>1. Oyun konusu</h2>
+    <div class="card">
+      <p><strong>Tür:</strong> 4 oyunculu asimetrik co-op / sosyal gerilim · 3D · Android</p>
+      <p><strong>Hikâye / tema:</strong> Belediye binasında süre dolmadan <strong>belediye başkanının gizli belgeleri</strong> için mücadele edilir.</p>
+      <ul>
+        <li><strong>Ajan</strong> — sahada belgeyi bulur, çalar, kaçış noktasına götürür.</li>
+        <li><strong>Operatör</strong> — merkezden kameraları / kapıları yönetir; ajana yol tarif eder (“sol koridor, muhafız var”).</li>
+        <li><strong>Belediye Başkanı</strong> — gerçek oyuncu; belgeleri korur, alarm / kilit yetkisi kullanır, gerekirse belgeyi başka yere kaçırır.</li>
+        <li><strong>Başkan Yardımcısı</strong> — gerçek oyuncu; başkana destek olur, kısmi yetki; ihanet potansiyeli tasarımda açık bırakılır.</li>
+      </ul>
+      <p><strong>Silah seviyesi:</strong> Yok veya çok düşük (ör. 5 saniye uyutan şok, sis bombası). Odak: gizlilik, zaman, iletişim, belge kontrolü.</p>
+      <p><strong>Maç süresi:</strong> 10 dakika sabit. Süre bitince belge kimin tarafında / kimin kontrolündeyse o taraf kazanır (sunucu karar verir).</p>
+      <p><strong>XP:</strong> Maç başına en fazla <strong>100 XP</strong>. Toplam XP: <span class="mono">1000 = seviye 1</span>, <span class="mono">2000 = seviye 2</span>, … (<span class="mono">level = floor(totalXP / 1000)</span>). Ödül: coin, kostüm, ileride klan XP.</p>
+      <p><strong>Lobby hissi:</strong> Mimicry tarzı — ortada karakter; tıklanınca karakter seçimi; panel kapanınca sağda kostümler ve dükkan.</p>
+      <p><strong>İleride:</strong> Klan, seviye, 10+ harita, admin menü (pass), isim değiştirme, Play Store APK/AAB. 1. hafta bunları bitirmez; sadece temel dikey dilim.</p>
+    </div>
+
+    <h2>2. Ekip ve araçlar</h2>
+    <table>
+      <tr><th>Kişi</th><th>Rol</th><th>Araç</th></tr>
+      <tr>
+        <td><span class="tag tag-said">Said</span></td>
+        <td>Backend, protokol, XP, oda mantığı</td>
+        <td>Python 3 · websockets · VS Code / PyCharm</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-ege">Ege</span></td>
+        <td>Client, 3D lobby, UI, Android build</td>
+        <td>Unity 2022 LTS · Android Build Support</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-both">İkisi</span></td>
+        <td>Tasarım kararları, test, iletişim</td>
+        <td>Discord / WA · Git veya Drive</td>
+      </tr>
+    </table>
+    <div class="warn">
+      <strong>Android kuralı:</strong> İlk günden proje Android’e açık olsun. UI parmak dostu büyük buton. Yön: landscape (yatay) — bir kez seçilsin, 1. hafta değişmesin.
+    </div>
+
+    <h2>3. 1. hafta bitince elde olacaklar (başarı kriteri)</h2>
+    <div class="success">
+      <ul class="check">
+        <li>Telefonda APK açılıyor (veya en az bir Android cihazda test build)</li>
+        <li>Python sunucusuna WebSocket ile bağlanılıyor</li>
+        <li>Lobby: isim, ortada karakter, tıklanınca karakter paneli, sağda kostüm/dükkan sekmeleri (görsel)</li>
+        <li>Chat oda içinde çalışıyor</li>
+        <li>Oda kur / katıl — en az 2 oyuncu aynı odada görünüyor (hedef 4 slot altyapısı)</li>
+        <li>4 rol isimleri sunucudan geliyor (agent, operator, mayor, deputy)</li>
+        <li>Basit 1 map blokout (küpler): hareket + belge alma + süre bitişi</li>
+        <li>Maç sonu max 100 XP ve seviye hesabı sunucuda yazılıyor</li>
+      </ul>
+    </div>
+
+    <h2>4. Gün gün detay plan</h2>
+
+    <div class="day">
+      <h3>Gün 1 — Kurulum ve ilk bağlantı</h3>
+      <p><span class="tag tag-both">İkisi</span></p>
+      <ul>
+        <li>Proje adı ve paket adı netleştir (ör. <span class="mono">com.saidege.belge</span>) — bir daha değişmeyecek.</li>
+        <li>Ortak klasör / Git repo.</li>
+        <li>Sabit iletişim kanalı; “bugün bitti” checklist mesajı.</li>
+      </ul>
+      <p><span class="tag tag-ege">Ege — Unity</span></p>
+      <ul>
+        <li>Unity Hub: 2022 LTS + <strong>Android Build Support</strong> + SDK/NDK kurulu mu kontrol.</li>
+        <li>Yeni 3D proje. File → Build Settings → Android; Switch Platform.</li>
+        <li>Player Settings: Landscape, paket adı, minimum API (Play’e yakın hedef ileride).</li>
+        <li>Sahne: <span class="mono">Lobby</span>. Boş Canvas + bir Text “Said &amp; Ege — bağlanıyor…”.</li>
+      </ul>
+      <p><span class="tag tag-said">Said — Python</span></p>
+      <ul>
+        <li><span class="mono">pip install websockets</span></li>
+        <li><span class="mono">server.py</span>: <span class="mono">0.0.0.0:8765</span> dinle; gelen her mesajı logla; <span class="mono">{"t":"welcome","id":"..."}</span> gönder.</li>
+        <li>Firewall’da 8765 açık; telefona test için bilgisayar LAN IP’sini not et.</li>
+      </ul>
+      <p><strong>Gün sonu kriteri:</strong> Unity Editor veya telefon, sunucuya bağlandı log’u (<span class="mono">welcome</span> alındı).</p>
+    </div>
+
+    <div class="day">
+      <h3>Gün 2 — Mimicry tarzı lobby UI + profil</h3>
+      <p><span class="tag tag-ege">Ege</span></p>
+      <ul>
+        <li><strong>Ortada</strong> karakter alanı (geçici: Capsule + Button). Tıklanınca <span class="mono">PanelCharacters</span> açılsın.</li>
+        <li>Karakter paneli kapanınca <strong>sağ panel</strong> görünsün: sekmeler <strong>Kostümler</strong> | <strong>Dükkan</strong> (içerik placeholder butonlar).</li>
+        <li>Üst veya alt: isim InputField, Oda Kur, Hazır, Chat Input + log Text.</li>
+        <li>Tüm butonlar en az ~48dp dokunma alanı (mobil).</li>
+      </ul>
+      <p><span class="tag tag-said">Said</span></p>
+      <ul>
+        <li>Paketler: <span class="mono">set_name</span>, <span class="mono">set_char</span>, <span class="mono">set_costume</span>, <span class="mono">chat</span>.</li>
+        <li>Oyuncu state: id, name, char_id, costume_id, coin (başlangıç 100), xp, level.</li>
+        <li>Chat: aynı odadakilere broadcast (oda yoksa şimdilik global test kanalı da olur).</li>
+      </ul>
+      <p><strong>Gün sonu kriteri:</strong> İsim değişir, chat iki yönlü görünür, karakter paneli aç/kapa sağ paneli gizler/gösterir.</p>
+    </div>
+
+    <div class="day">
+      <h3>Gün 3 — 4 kişilik oda sistemi</h3>
+      <p><span class="tag tag-said">Said</span></p>
+      <ul>
+        <li><span class="mono">create_room</span> → room_id (6 karakter kod).</li>
+        <li><span class="mono">join_room</span> + kod; max <strong>4</strong> oyuncu; dolunca red mesajı.</li>
+        <li><span class="mono">room_update</span>: listedeki isimler, ready flag, host id.</li>
+        <li>Disconnect olunca odadan düşür; oda boşsa sil.</li>
+      </ul>
+      <p><span class="tag tag-ege">Ege</span></p>
+      <ul>
+        <li>4 slot UI (boş / dolu isim / hazır işareti).</li>
+        <li>Oda kodu yazıp katıl; host “oda kur”.</li>
+        <li>Hazır butonu sunucuya <span class="mono">ready</span> göndersin.</li>
+      </ul>
+      <p><strong>Gün sonu kriteri:</strong> En az 2 cihaz/Editor aynı odada isimleri görüyor. 4 slot yapısı hazır (eksik yerler “boş” kalabilir).</p>
+    </div>
+
+    <div class="day">
+      <h3>Gün 4 — Roller, 10 dakika mantığı, maç state</h3>
+      <p><span class="tag tag-said">Said</span></p>
+      <ul>
+        <li>Host başlatınca (veya 4 ready) rolleri rastgele dağıt: <span class="mono">agent</span>, <span class="mono">operator</span>, <span class="mono">mayor</span>, <span class="mono">deputy</span>.</li>
+        <li>2 kişi test için: eksik rolleri “bot” ile doldurma veya aynı rolleri sadece log’da gösterme — ama protokol 4 rol taşımalı.</li>
+        <li>Sayaç: testte <strong>60 saniye</strong>; prod’da 600. Her 5 sn <span class="mono">timer</span> tick; bitince <span class="mono">match_end</span>.</li>
+        <li>Belge sahibi id alanı: <span class="mono">doc_holder</span> (null veya player id).</li>
+      </ul>
+      <p><span class="tag tag-ege">Ege</span></p>
+      <ul>
+        <li>Rol kartı ekranı Türkçe: “Senin rolün: Ajan” vb. kısa açıklama.</li>
+        <li>Geri sayım text (mm:ss).</li>
+        <li>Maç sahnesine geçiş (boş bile olsa <span class="mono">Match</span> scene).</li>
+      </ul>
+      <p><strong>Gün sonu kriteri:</strong> Başlat → rol mesajı geliyor → sayaç iniyor → match_end geliyor.</p>
+    </div>
+
+    <div class="day">
+      <h3>Gün 5 — 1 map 3D blokout + belge</h3>
+      <p><span class="tag tag-ege">Ege</span></p>
+      <ul>
+        <li>ProBuilder veya küplerle “Belediye”: koridor + 2 oda + 1 çıkış bölgesi.</li>
+        <li>Android: ekran sol alt <strong>joystick</strong> (basit UI joystick asset veya kendi script).</li>
+        <li>Sarı küp = belge. Dokunma / trigger ile “topla” → sunucuya <span class="mono">pickup_doc</span>.</li>
+        <li>Çıkış trigger: belgesi olan ajan tarafı için <span class="mono">extract</span> denemesi.</li>
+        <li>Kamera: 3. şahıs veya üst-arkası; mobilde kontrol rahat olsun.</li>
+      </ul>
+      <p><span class="tag tag-said">Said</span></p>
+      <ul>
+        <li><span class="mono">pickup_doc</span>: sadece bir kişi tutar; kim tutuyor room state’te.</li>
+        <li><span class="mono">extract</span> / süre sonu: kazanan tarafı hesapla (basit kural: belge agent tarafındaysa agent+op; değilse mayor tarafı — detay sonra netleşir).</li>
+        <li>Operatör komut iskeleti (şimdilik log): <span class="mono">op_cmd</span> cam_off / door_unlock — map’te henüz efekt şart değil.</li>
+      </ul>
+      <p><strong>Gün sonu kriteri:</strong> Editor’da yürüyüp belge alınıyor; süre veya extract ile maç bitiyor.</p>
+    </div>
+
+    <div class="day">
+      <h3>Gün 6 — Android build ve cihaz testi</h3>
+      <p><span class="tag tag-ege">Ege</span></p>
+      <ul>
+        <li>Build Settings → Android → Build (APK veya Development Build).</li>
+        <li>USB debug veya APK dosyasını telefona at.</li>
+        <li><span class="mono">NetClient</span> URL: bilgisayarın LAN IP’si (<span class="mono">ws://192.168.x.x:8765</span>) — telefon aynı WiFi.</li>
+        <li>Joystick + UI dokunma sorunlarını düzelt; yazı boyutu oku.</li>
+      </ul>
+      <p><span class="tag tag-said">Said</span></p>
+      <ul>
+        <li>Sunucu laptop’ta açık; bağlanan id’leri logla.</li>
+        <li>İki client (Editor + telefon veya iki telefon) oda + chat testi.</li>
+        <li>Kopma / yeniden bağlanma notları (tam reconnect 1. hafta şart değil).</li>
+      </ul>
+      <p><strong>Gün sonu kriteri:</strong> En az bir gerçek telefonda lobby + kısa maç akışı.</p>
+    </div>
+
+    <div class="day">
+      <h3>Gün 7 — XP, ödül ekranı, cilâ, liste</h3>
+      <p><span class="tag tag-said">Said</span></p>
+      <ul>
+        <li>Maç sonunda toplam XP ≤ 100; kazanan/kaybeden ayrımı kaba da olsa uygula.</li>
+        <li><span class="mono">total_xp</span> biriktir; <span class="mono">level = total_xp // 1000</span>.</li>
+        <li>Coin ödülü (ör. +10…20); <span class="mono">match_result</span> paketi: xp_gain, coin_gain, level, win.</li>
+      </ul>
+      <p><span class="tag tag-ege">Ege</span></p>
+      <ul>
+        <li>Sonuç paneli: kazandın/kaybettin, +XP, coin, seviye.</li>
+        <li>Lobby’ye dönüş butonu.</li>
+        <li>Bilinen bug listesi (ortak not): 10 maddeyi geçmesin, öncelik sırası.</li>
+      </ul>
+      <p><span class="tag tag-both">İkisi</span></p>
+      <ul>
+        <li>15 dakikalık “demo gösterimi” prova (okul/arkadaş gösterimi için).</li>
+        <li>2. hafta karar: operatör komutları mı, dükkan satın alma mı, 2. map mi.</li>
+      </ul>
+      <p><strong>Gün sonu kriteri:</strong> Hafta 1 başarı listesindeki maddelerin çoğu işaretli; demo bir kez baştan sona koşturuldu.</p>
+    </div>
+
+    <h2>5. Konu ile 1. hafta ilişkisi</h2>
+    <div class="card">
+      <p>1. hafta “tam oyun” değil; <strong>konunun iskeleti</strong>:</p>
+      <ul>
+        <li>Belgeler = sarı küp / tek objective (başkanın bilgisi teması).</li>
+        <li>Dört rol = sunucu etiketleri + Türkçe kart (ajan–operatör vs başkan–yardımcı anlatımı).</li>
+        <li>10 dakika = timer altyapısı (testte 60 sn).</li>
+        <li>Belediye = ilk map blokout adı ve koridor düzeni.</li>
+        <li>Operatör “talimat” fantazisi = chat + sonra op_cmd; 1. hafta chat yeterli.</li>
+      </ul>
+    </div>
+
+    <h2>6. Bilerek 1. haftaya alınmayanlar</h2>
+    <table>
+      <tr><th>Özellik</th><th>Neden sonra</th></tr>
+      <tr><td>10+ harita</td><td>1 map oturmadan çoğaltmak zaman yer</td></tr>
+      <tr><td>Klan sistemi</td><td>Meta; maç çekirdeği önce</td></tr>
+      <tr><td>Admin ban menüsü</td><td>Abuse azken gerekli değil</td></tr>
+      <tr><td>Play Store yayın</td><td>İnceleme + gizlilik; demo stabil olsun</td></tr>
+      <tr><td>Gelişmiş muhafız AI</td><td>Blokout + timer yeterli</td></tr>
+      <tr><td>Traitor dengesi</td><td>Önce 2v2 net kurallar</td></tr>
+    </table>
+
+    <h2>7. Günlük ritim (okul temposu)</h2>
+    <ul>
+      <li>Her gün: en az <strong>1 kriter</strong> kapatılacak şekilde iş böl.</li>
+      <li>Gece: 5 satır “ne bitti / ne kırık” mesajı.</li>
+      <li>Takılınca 1 saatten fazla aynı bug’da kalma; diğerinin işine geç veya geçici stub koy.</li>
+    </ul>
+
+    <h2>8. Kısa konu metni (splash / demo girişi)</h2>
+    <div class="card">
+      <p style="font-style: italic; margin: 0;">
+        “Belediye arşivi. On dakika. Ajan ve operatör başkanın belgelerini ister; başkan ve yardımcısı engeller ya da belgeleri kaçırır.
+        Said &amp; Ege — 4 oyuncu, bir bina, tek hedef.”
+      </p>
+    </div>
+
+    <footer>
+      Said &amp; Ege · Hafta 1 Planı · Android 3D · Unity + Python<br />
+      Konu: Belediye belgesi heist · 4 rol · 10 dk · XP sistemi
+    </footer>
+  </div>
+</body>
+</html>
+
+
+i
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Said &amp; Ege — Hafta 1 Planı</title>
+  <style>
+    :root {
+      --bg: #0c0e14;
+      --card: #141824;
+      --line: #2a3144;
+      --text: #e8ecf8;
+      --muted: #9aa3b8;
+      --accent: #6b8cff;
+      --green: #3dd68c;
+      --orange: #ffb020;
+      --red: #ff6b7a;
+      --purple: #a78bfa;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      padding: 24px 16px 64px;
+    }
+    .wrap { max-width: 880px; margin: 0 auto; }
+    header {
+      border: 1px solid var(--line);
+      background: linear-gradient(145deg, #151a2a, #0f121c);
+      border-radius: 16px;
+      padding: 28px 24px;
+      margin-bottom: 24px;
+    }
+    header h1 {
+      margin: 0 0 6px;
+      font-size: 1.85rem;
+      letter-spacing: 0.02em;
+      color: var(--accent);
+    }
+    header .sub { color: var(--muted); font-size: 0.95rem; }
+    header .badge {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #1c2438;
+      border: 1px solid var(--line);
+      font-size: 0.82rem;
+      color: var(--green);
+    }
+    h2 {
+      margin: 32px 0 12px;
+      font-size: 1.25rem;
+      color: var(--accent);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+    h3 {
+      margin: 20px 0 8px;
+      font-size: 1.05rem;
+      color: var(--orange);
+    }
+    p { margin: 0 0 12px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin: 12px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      margin: 12px 0;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #1a2030; color: var(--accent); }
+    ul, ol { margin: 8px 0 12px; padding-left: 1.25rem; }
+    li { margin: 4px 0; }
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .tag-said { background: #1a2a22; color: var(--green); }
+    .tag-ege { background: #1a2233; color: var(--accent); }
+    .tag-both { background: #2a2438; color: var(--purple); }
+    .day {
+      border-left: 4px solid var(--accent);
+      padding-left: 14px;
+      margin: 28px 0;
+    }
+    .day h3 { margin-top: 0; color: var(--text); }
+    .check { list-style: none; padding-left: 0; }
+    .check li::before { content: "☐ "; color: var(--muted); }
+    .warn {
+      background: #2a1c14;
+      border: 1px solid #5a3a20;
+      color: #ffd0a0;
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.9rem;
+    }
+    .success {
+      background: #14241c;
+      border: 1px solid #2a5a40;
+      color: #b8f0d0;
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    code, .mono {
+      font-family: ui-monospace, Consolas, monospace;
+      font-size: 0.88em;
+      background: #1a2030;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+    footer {
+      margin-top: 40px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Said &amp; Ege</h1>
+      <div class="sub">Oyun geliştirme — 1. Hafta detay planı · Android · Unity + Python</div>
+      <span class="badge">Hedef: Okul kapanmadan oynanır demo iskeleti</span>
+    </header>
+
+    <h2>1. Oyun konusu</h2>
+    <div class="card">
+      <p><strong>Tür:</strong> 4 oyunculu asimetrik co-op / sosyal gerilim · 3D · Android</p>
+      <p><strong>Hikâye / tema:</strong> Belediye binasında süre dolmadan <strong>belediye başkanının gizli belgeleri</strong> için mücadele edilir.</p>
+      <ul>
+        <li><strong>Ajan</strong> — sahada belgeyi bulur, çalar, kaçış noktasına götürür.</li>
+        <li><strong>Operatör</strong> — merkezden kameraları / kapıları yönetir; ajana yol tarif eder (“sol koridor, muhafız var”).</li>
+        <li><strong>Belediye Başkanı</strong> — gerçek oyuncu; belgeleri korur, alarm / kilit yetkisi kullanır, gerekirse belgeyi başka yere kaçırır.</li>
+        <li><strong>Başkan Yardımcısı</strong> — gerçek oyuncu; başkana destek olur, kısmi yetki; ihanet potansiyeli tasarımda açık bırakılır.</li>
+      </ul>
+      <p><strong>Silah seviyesi:</strong> Yok veya çok düşük (ör. 5 saniye uyutan şok, sis bombası). Odak: gizlilik, zaman, iletişim, belge kontrolü.</p>
+      <p><strong>Maç süresi:</strong> 10 dakika sabit. Süre bitince belge kimin tarafında / kimin kontrolündeyse o taraf kazanır (sunucu karar verir).</p>
+      <p><strong>XP:</strong> Maç başına en fazla <strong>100 XP</strong>. Toplam XP: <span class="mono">1000 = seviye 1</span>, <span class="mono">2000 = seviye 2</span>, … (<span class="mono">level = floor(totalXP / 1000)</span>). Ödül: coin, kostüm, ileride klan XP.</p>
+      <p><strong>Lobby hissi:</strong> Mimicry tarzı — ortada karakter; tıklanınca karakter seçimi; panel kapanınca sağda kostümler ve dükkan.</p>
+      <p><strong>İleride:</strong> Klan, seviye, 10+ harita, admin menü (pass), isim değiştirme, Play Store APK/AAB. 1. hafta bunları bitirmez; sadece temel dikey dilim.</p>
+    </div>
+
+    <h2>2. Ekip ve araçlar</h2>
+    <table>
+      <tr><th>Kişi</th><th>Rol</th><th>Araç</th></tr>
+      <tr>
+        <td><span class="tag tag-said">Said</span></td>
+        <td>Backend, protokol, XP, oda mantığı</td>
+        <td>Python 3 · websockets · VS Code / PyCharm</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-ege">Ege</span></td>
+        <td>Client, 3D lobby, UI, Android build</td>
+        <td>Unity 2022 LTS · Android Build Support</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-both">İkisi</span></td>
+        <td>Tasarım kararları, test, iletişim</td>
+        <td>Discord / WA · Git veya Drive</td>
+      </tr>
+    </table>
+    <div class="warn">
+      <strong>Android kuralı:</strong> İlk günden proje Android’e açık olsun. UI parmak dostu büyük buton. Yön: landscape (yatay) — bir kez seçilsin, 1. hafta değişmesin.
+    </div>
+
+    <h2>3. 1. hafta bitince elde olacaklar (başarı kriteri)</h2>
+    <div class="success">
+      <ul class="check">
+        <li>Telefonda APK açılıyor (veya en az bir Android cihazda test build)</li>
+        <li>Python sunucusuna WebSocket ile bağlanılıyor</li>
+        <li>Lobby: isim, ortada karakter, tıklanınca karakter paneli, sağda kostüm/dükkan sekmeleri (görsel)</li>
+        <li>Chat oda içinde çalışıyor</li>
+        <li>Oda kur / katıl — en az 2 oyuncu aynı odada görünüyor (hedef 4 slot altyapısı)</li>
+        <li>4 rol isimleri sunucudan geliyor (agent, operator, mayor, deputy)</li>
+        <li>Basit 1 map blokout (küpler): hareket + belge alma + süre bitişi</li>
+        <li>Maç sonu max 100 XP ve seviye hesabı sunucuda yazılıyor</li>
+      </ul>
+    </div>
+
+    <h2>4. Gün gün detay plan</h2>
+
+    <div class="day">
+      <h3>Gün 1 — Kurulum ve ilk bağlantı</h3>
+      <p><span class="tag tag-both">İkisi</span></p>
+      <ul>
+        <li>Proje adı ve paket adı netleştir (ör. <span class="mono">com.saidege.belge</span>) — bir daha değişmeyecek.</li>
+        <li>Ortak klasör / Git repo.</li>
+        <li>Sabit iletişim kanalı; “bugün bitti” checklist mesajı.</li>
+      </ul>
+      <p><span class="tag tag-ege">Ege — Unity</span></p>
+      <ul>
+        <li>Unity Hub: 2022 LTS + <strong>Android Build Support</strong> + SDK/NDK kurulu mu kontrol.</li>
+        <li>Yeni 3D proje. File → Build Settings → Android; Switch Platform.</li>
+        <li>Player Settings: Landscape, paket adı, minimum API (Play’e yakın hedef ileride).</li>
+        <li>Sahne: <span class="mono">Lobby</span>. Boş Canvas + bir Text “Said &amp; Ege — bağlanıyor…”.</li>
+      </ul>
+      <p><span class="tag tag-said">Said — Python</span></p>
+      <ul>
+        <li><span class="mono">pip install websockets</span></li>
+        <li><span class="mono">server.py</span>: <span class="mono">0.0.0.0:8765</span> dinle; gelen her mesajı logla; <span class="mono">{"t":"welcome","id":"..."}</span> gönder.</li>
+        <li>Firewall’da 8765 açık; telefona test için bilgisayar LAN IP’sini not et.</li>
+      </ul>
+      <p><strong>Gün sonu kriteri:</strong> Unity Editor veya telefon, sunucuya bağlandı log’u (<span class="mono">welcome</span> alındı).</p>
+    </div>
+
+    <div class="day">
+      <h3>Gün 2 — Mimicry tarzı lobby UI + profil</h3>
+      <p><span class="tag tag-ege">Ege</span></p>
+      <ul>
+        <li><strong>Ortada</strong> karakter alanı (geçici: Capsule + Button). Tıklanınca <span class="mono">PanelCharacters</span> açılsın.</li>
+        <li>Karakter paneli kapanınca <strong>sağ panel</strong> görünsün: sekmeler <strong>Kostümler</strong> | <strong>Dükkan</strong> (içerik placeholder butonlar).</li>
+        <li>Üst veya alt: isim InputField, Oda Kur, Hazır, Chat Input + log Text.</li>
+        <li>Tüm butonlar en az ~48dp dokunma alanı (mobil).</li>
+      </ul>
+      <p><span class="tag tag-said">Said</span></p>
+      <ul>
+        <li>Paketler: <span class="mono">set_name</span>, <span class="mono">set_char</span>, <span class="mono">set_costume</span>, <span class="mono">chat</span>.</li>
+        <li>Oyuncu state: id, name, char_id, costume_id, coin (başlangıç 100), xp, level.</li>
+        <li>Chat: aynı odadakilere broadcast (oda yoksa şimdilik global test kanalı da olur).</li>
+      </ul>
+      <p><strong>Gün sonu kriteri:</strong> İsim değişir, chat iki yönlü görünür, karakter paneli aç/kapa sağ paneli gizler/gösterir.</p>
+    </div>
+
+    <div class="day">
+      <h3>Gün 3 — 4 kişilik oda sistemi</h3>
+      <p><span class="tag tag-said">Said</span></p>
+      <ul>
+        <li><span class="mono">create_room</span> → room_id (6 karakter kod).</li>
+        <li><span class="mono">join_room</span> + kod; max <strong>4</strong> oyuncu; dolunca red mesajı.</li>
+        <li><span class="mono">room_update</span>: listedeki isimler, ready flag, host id.</li>
+        <li>Disconnect olunca odadan düşür; oda boşsa sil.</li>
+      </ul>
+      <p><span class="tag tag-ege">Ege</span></p>
+      <ul>
+        <li>4 slot UI (boş / dolu isim / hazır işareti).</li>
+        <li>Oda kodu yazıp katıl; host “oda kur”.</li>
+        <li>Hazır butonu sunucuya <span class="mono">ready</span> göndersin.</li>
+      </ul>
+      <p><strong>Gün sonu kriteri:</strong> En az 2 cihaz/Editor aynı odada isimleri görüyor. 4 slot yapısı hazır (eksik yerler “boş” kalabilir).</p>
+    </div>
+
+    <div class="day">
+      <h3>Gün 4 — Roller, 10 dakika mantığı, maç state</h3>
+      <p><span class="tag tag-said">Said</span></p>
+      <ul>
+        <li>Host başlatınca (veya 4 ready) rolleri rastgele dağıt: <span class="mono">agent</span>, <span class="mono">operator</span>, <span class="mono">mayor</span>, <span class="mono">deputy</span>.</li>
+        <li>2 kişi test için: eksik rolleri “bot” ile doldurma veya aynı rolleri sadece log’da gösterme — ama protokol 4 rol taşımalı.</li>
+        <li>Sayaç: testte <strong>60 saniye</strong>; prod’da 600. Her 5 sn <span class="mono">timer</span> tick; bitince <span class="mono">match_end</span>.</li>
+        <li>Belge sahibi id alanı: <span class="mono">doc_holder</span> (null veya player id).</li>
+      </ul>
+      <p><span class="tag tag-ege">Ege</span></p>
+      <ul>
+        <li>Rol kartı ekranı Türkçe: “Senin rolün: Ajan” vb. kısa açıklama.</li>
+        <li>Geri sayım text (mm:ss).</li>
+        <li>Maç sahnesine geçiş (boş bile olsa <span class="mono">Match</span> scene).</li>
+      </ul>
+      <p><strong>Gün sonu kriteri:</strong> Başlat → rol mesajı geliyor → sayaç iniyor → match_end geliyor.</p>
+    </div>
+
+    <div class="day">
+      <h3>Gün 5 — 1 map 3D blokout + belge</h3>
+      <p><span class="tag tag-ege">Ege</span></p>
+      <ul>
+        <li>ProBuilder veya küplerle “Belediye”: koridor + 2 oda + 1 çıkış bölgesi.</li>
+        <li>Android: ekran sol alt <strong>joystick</strong> (basit UI joystick asset veya kendi script).</li>
+        <li>Sarı küp = belge. Dokunma / trigger ile “topla” → sunucuya <span class="mono">pickup_doc</span>.</li>
+        <li>Çıkış trigger: belgesi olan ajan tarafı için <span class="mono">extract</span> denemesi.</li>
+        <li>Kamera: 3. şahıs veya üst-arkası; mobilde kontrol rahat olsun.</li>
+      </ul>
+      <p><span class="tag tag-said">Said</span></p>
+      <ul>
+        <li><span class="mono">pickup_doc</span>: sadece bir kişi tutar; kim tutuyor room state’te.</li>
+        <li><span class="mono">extract</span> / süre sonu: kazanan tarafı hesapla (basit kural: belge agent tarafındaysa agent+op; değilse mayor tarafı — detay sonra netleşir).</li>
+        <li>Operatör komut iskeleti (şimdilik log): <span class="mono">op_cmd</span> cam_off / door_unlock — map’te henüz efekt şart değil.</li>
+      </ul>
+      <p><strong>Gün sonu kriteri:</strong> Editor’da yürüyüp belge alınıyor; süre veya extract ile maç bitiyor.</p>
+    </div>
+
+    <div class="day">
+      <h3>Gün 6 — Android build ve cihaz testi</h3>
+      <p><span class="tag tag-ege">Ege</span></p>
+      <ul>
+        <li>Build Settings → Android → Build (APK veya Development Build).</li>
+        <li>USB debug veya APK dosyasını telefona at.</li>
+        <li><span class="mono">NetClient</span> URL: bilgisayarın LAN IP’si (<span class="mono">ws://192.168.x.x:8765</span>) — telefon aynı WiFi.</li>
+        <li>Joystick + UI dokunma sorunlarını düzelt; yazı boyutu oku.</li>
+      </ul>
+      <p><span class="tag tag-said">Said</span></p>
+      <ul>
+        <li>Sunucu laptop’ta açık; bağlanan id’leri logla.</li>
+        <li>İki client (Editor + telefon veya iki telefon) oda + chat testi.</li>
+        <li>Kopma / yeniden bağlanma notları (tam reconnect 1. hafta şart değil).</li>
+      </ul>
+      <p><strong>Gün sonu kriteri:</strong> En az bir gerçek telefonda lobby + kısa maç akışı.</p>
+    </div>
+
+    <div class="day">
+      <h3>Gün 7 — XP, ödül ekranı, cilâ, liste</h3>
+      <p><span class="tag tag-said">Said</span></p>
+      <ul>
+        <li>Maç sonunda toplam XP ≤ 100; kazanan/kaybeden ayrımı kaba da olsa uygula.</li>
+        <li><span class="mono">total_xp</span> biriktir; <span class="mono">level = total_xp // 1000</span>.</li>
+        <li>Coin ödülü (ör. +10…20); <span class="mono">match_result</span> paketi: xp_gain, coin_gain, level, win.</li>
+      </ul>
+      <p><span class="tag tag-ege">Ege</span></p>
+      <ul>
+        <li>Sonuç paneli: kazandın/kaybettin, +XP, coin, seviye.</li>
+        <li>Lobby’ye dönüş butonu.</li>
+        <li>Bilinen bug listesi (ortak not): 10 maddeyi geçmesin, öncelik sırası.</li>
+      </ul>
+      <p><span class="tag tag-both">İkisi</span></p>
+      <ul>
+        <li>15 dakikalık “demo gösterimi” prova (okul/arkadaş gösterimi için).</li>
+        <li>2. hafta karar: operatör komutları mı, dükkan satın alma mı, 2. map mi.</li>
+      </ul>
+      <p><strong>Gün sonu kriteri:</strong> Hafta 1 başarı listesindeki maddelerin çoğu işaretli; demo bir kez baştan sona koşturuldu.</p>
+    </div>
+
+    <h2>5. Konu ile 1. hafta ilişkisi</h2>
+    <div class="card">
+      <p>1. hafta “tam oyun” değil; <strong>konunun iskeleti</strong>:</p>
+      <ul>
+        <li>Belgeler = sarı küp / tek objective (başkanın bilgisi teması).</li>
+        <li>Dört rol = sunucu etiketleri + Türkçe kart (ajan–operatör vs başkan–yardımcı anlatımı).</li>
+        <li>10 dakika = timer altyapısı (testte 60 sn).</li>
+        <li>Belediye = ilk map blokout adı ve koridor düzeni.</li>
+        <li>Operatör “talimat” fantazisi = chat + sonra op_cmd; 1. hafta chat yeterli.</li>
+      </ul>
+    </div>
+
+    <h2>6. Bilerek 1. haftaya alınmayanlar</h2>
+    <table>
+      <tr><th>Özellik</th><th>Neden sonra</th></tr>
+      <tr><td>10+ harita</td><td>1 map oturmadan çoğaltmak zaman yer</td></tr>
+      <tr><td>Klan sistemi</td><td>Meta; maç çekirdeği önce</td></tr>
+      <tr><td>Admin ban menüsü</td><td>Abuse azken gerekli değil</td></tr>
+      <tr><td>Play Store yayın</td><td>İnceleme + gizlilik; demo stabil olsun</td></tr>
+      <tr><td>Gelişmiş muhafız AI</td><td>Blokout + timer yeterli</td></tr>
+      <tr><td>Traitor dengesi</td><td>Önce 2v2 net kurallar</td></tr>
+    </table>
+
+    <h2>7. Günlük ritim (okul temposu)</h2>
+    <ul>
+      <li>Her gün: en az <strong>1 kriter</strong> kapatılacak şekilde iş böl.</li>
+      <li>Gece: 5 satır “ne bitti / ne kırık” mesajı.</li>
+      <li>Takılınca 1 saatten fazla aynı bug’da kalma; diğerinin işine geç veya geçici stub koy.</li>
+    </ul>
+
+    <h2>8. Kısa konu metni (splash / demo girişi)</h2>
+    <div class="card">
+      <p style="font-style: italic; margin: 0;">
+        “Belediye arşivi. On dakika. Ajan ve operatör başkanın belgelerini ister; başkan ve yardımcısı engeller ya da belgeleri kaçırır.
+        Said &amp; Ege — 4 oyuncu, bir bina, tek hedef.”
+      </p>
+    </div>
+
+    <footer>
+      Said &amp; Ege · Hafta 1 Planı · Android 3D · Unity + Python<br />
+      Konu: Belediye belgesi heist · 4 rol · 10 dk · XP sistemi
+    </footer>
+  </div>
+</body>
+</html>
